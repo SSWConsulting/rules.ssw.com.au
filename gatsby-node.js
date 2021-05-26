@@ -119,6 +119,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
+  var count = 0;
 
   result.data.rules.nodes.forEach((node) => {
     var match = false;
@@ -130,9 +131,11 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
     if (match == false) {
+      count++;
       console.log('https://www.ssw.com.au/rules/' + node.frontmatter.uri);
     }
   });
+  console.log(count);
   throw new Error();
 };
 
