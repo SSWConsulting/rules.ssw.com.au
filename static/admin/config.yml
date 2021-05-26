@@ -2,7 +2,7 @@ backend:
   name: github
   repo: SSWConsulting/SSW.Rules.Content
   branch: sample-content-with-guid
-  base_url: https://lumpy-petite-coreopsis.glitch.me
+  base_url: http://localhost:7071/api
   open_authoring: true
 
 media_folder: static/assets

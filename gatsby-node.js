@@ -119,41 +119,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const categoryTemplate = require.resolve('./src/templates/category.js');
-  const ruleTemplate = require.resolve('./src/templates/rule.js');
-
-  result.data.categories.nodes.forEach((node) => {
-    createPage({
-      path: node.parent.name,
-      component: categoryTemplate,
-      context: {
-        slug: node.fields.slug,
-        index: node.frontmatter.index,
-        redirects: node.frontmatter.redirects,
-      },
-    });
-  });
 
   result.data.rules.nodes.forEach((node) => {
-    createPage({
-      path: node.frontmatter.uri,
-      component: ruleTemplate,
-      context: {
-        slug: node.fields.slug,
-        related: node.frontmatter.related ? node.frontmatter.related : [''],
-        uri: node.frontmatter.uri,
-        redirects: node.frontmatter.redirects,
-        file: `rules/${node.frontmatter.uri}/rule.md`,
-      },
+    var match = false;
+    result.data.categories.nodes.forEach((catNode) => {
+      catNode.frontmatter.index.forEach((inCat) => {
+        if (node.frontmatter.uri == inCat) {
+          match = true;
+        }
+      });
     });
+    if (match == false) {
+      console.log('https://www.ssw.com.au/rules/' + node.frontmatter.uri);
+    }
   });
-
-  const profilePage = require.resolve('./src/pages/profile.js');
-  createPage({
-    path: `${siteConfig.pathPrefix}/people/`,
-    matchPath: `${siteConfig.pathPrefix}/people/:gitHubUsername`,
-    component: profilePage,
-  });
+  throw new Error();
 };
 
 exports.onPostBuild = async ({ store, pathPrefix }) => {
