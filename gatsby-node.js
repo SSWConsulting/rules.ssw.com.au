@@ -123,13 +123,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.rules.nodes.forEach((node) => {
     var match = false;
-    result.data.categories.nodes.forEach((catNode) => {
-      catNode.frontmatter.index.forEach((inCat) => {
-        if (node.frontmatter.uri == inCat) {
-          match = true;
-        }
+    if (!node.frontmatter.archivedreason) {
+      result.data.categories.nodes.forEach((catNode) => {
+        catNode.frontmatter.index.forEach((inCat) => {
+          if (node.frontmatter.uri == inCat) {
+            match = true;
+          }
+        });
       });
-    });
+    } else {
+      match = true;
+    }
     if (match == false) {
       count++;
       console.log('https://www.ssw.com.au/rules/' + node.frontmatter.uri);
