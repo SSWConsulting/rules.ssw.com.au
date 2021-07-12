@@ -867,6 +867,10 @@ blockquote p:before {
   margin-bottom: 1rem;
 }
 
+.old-rules-link {
+  padding-left: 1rem;
+}
+
 /* Category List
 -------------------------------------------------- */
 
