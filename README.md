@@ -71,3 +71,9 @@ API_BASE_URL=#{API_BASE_URL}
 Merging changes to **main** on this repo will trigger:
 - a build/release of the **main** branch in Staging (https://sydiis2016q01.sydney.ssw.com.au/rules/).
 - a build/release of the **release** branch Production (https://www.ssw.com.au/rules)
+
+### Architecture
+
+https://github.com/SSWConsulting/SSW.Rules/blob/main/_docs/Technologies-and-Architecture/SSW-Rule-V2-architecture-diagram.png
+![Architechture diagram](https://raw.githubusercontent.com/SSWConsulting/SSW.Rules/main/_docs/Technologies-and-Architecture/SSW-Rule-V2-architecture-diagram.png)
+**Figure: SSW Rules architecture diagram**
